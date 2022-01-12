@@ -4,6 +4,12 @@ sources:
   - name: subscription
     database: SUBSCRIPTION
     schema: RAW
+    loader: daily_load_task
+    loaded_at_field: _loaded_at
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+
     tables:
       - name: account
         identifier: ACCOUNT
