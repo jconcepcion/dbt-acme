@@ -15,6 +15,9 @@ sources:
         identifier: ACCOUNT
         columns:
             - name: ID
+              tests:
+                - unique
+                - not_null            
             - name: NAME
             - name: STATE
             - name: CITY
@@ -27,7 +30,14 @@ sources:
             identifier: true
         columns:
             - name: ID
+              tests:
+                - unique
+                - not_null
             - name: CUSTOMER
+              tests:
+                - relationships:
+                    to: source('subscription','account')
+                    field: ID            
             - name: EFFECTIVE_ON
             - name: BOOKED_ON
             - name: TYPE
@@ -38,8 +48,19 @@ sources:
         identifier: ORDER_PRODUCT
         columns:
             - name: ID
-            - name: ORDER
-            - name: PRODUCT
+              tests:
+                - unique
+                - not_null            
+            - name: ORDER_ID
+              tests:
+                - relationships:
+                    to: source('subscription','order')
+                    field: ID            
+            - name: PRODUCT_ID
+              tests:
+                - relationships:
+                    to: source('subscription','product')
+                    field: ID            
             - name: QUANTITY_CHANGE
             - name: DELETED_AT
             - name: _LOADED_AT
@@ -48,6 +69,9 @@ sources:
         identifier: PRODUCT
         columns:
             - name: ID
+              tests:
+                - unique
+                - not_null            
             - name: NAME
             - name: UNIT
             - name: UNIT_RATE
