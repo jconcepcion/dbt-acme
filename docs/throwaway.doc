@@ -1,0 +1,16 @@
+
+/*
+throwaway as (
+select 
+*
+from {{ ref('throwaway') }}
+),
+*/
+
+/*
+final as
+(
+select co.* from cust_orders co
+join {{ ref('throwaway') }} t on 1 = t.id
+)
+*/
