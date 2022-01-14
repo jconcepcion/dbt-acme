@@ -9,4 +9,4 @@ TO_DATE(EFFECTIVE_ON, 'mm/dd/yy') as booked_on,
 type as type,
 CURRENT_TIMESTAMP as runtimestamp
 from orders
-where deleted_at IS NULL
+-- where deleted_at IS NULL
