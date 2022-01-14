@@ -46,7 +46,8 @@ on a.id = o.customer_id
 
 final as
 (
-select co.* from cust_orders co
+select co.*,
+CURRENT_TIMESTAMP as runtimestamp from cust_orders co
 )
 
 select * from final
