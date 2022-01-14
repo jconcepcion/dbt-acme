@@ -13,7 +13,7 @@ profile: 'default'
 # The `source-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
 model-paths: ["models"]
-analysis-paths: ["analyses"]
+analysis-paths: ["analysis"]
 test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
@@ -33,4 +33,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   my_new_project:
+    staging:
+      materialized: table
+    staging_2:
+      materialized: view    
   
